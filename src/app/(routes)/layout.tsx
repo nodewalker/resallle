@@ -1,11 +1,4 @@
-import type { Metadata } from "next";
 import "./globals.css";
-import { Header } from "../_components";
-
-export const metadata: Metadata = {
-  title: "Resallle",
-  description: "Think about",
-};
 
 export default function RootLayout({
   children,
@@ -14,10 +7,7 @@ export default function RootLayout({
 }>): React.ReactElement {
   return (
     <html lang="ru">
-      <body>
-        <Header />
-        {children}
-      </body>
+      <body className="relative">{children}</body>
     </html>
   );
 }
