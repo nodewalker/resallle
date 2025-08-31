@@ -1,4 +1,4 @@
-import { Header } from "@/app/_components";
+import { Footer, Header } from "@/app/_components";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,6 +15,7 @@ export default function RootLayout({
     <>
       <Header />
       {children}
+      <Footer />
     </>
   );
 }

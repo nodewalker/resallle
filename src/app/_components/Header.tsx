@@ -11,6 +11,8 @@ import {
 import { faUser, faHeart } from "@fortawesome/free-regular-svg-icons";
 import { SideBar } from "./SideBar";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { routes } from "../_utils/const";
 
 export const Header = (): React.ReactElement => {
   // SEARCH INPUT
@@ -120,14 +122,18 @@ export const Header = (): React.ReactElement => {
             />
           </div>
           <div className="flex gap-1 items-center cursor-pointer">
+            {/* TODO: OPEN MODAL WIN WITH CATEGORIES */}
             <div className="font-[600] text-[14px] leading-[16px] tracking-normal">
-              Все категории
+              {"Все категории"}
             </div>
             <FontAwesomeIcon icon={faAngleDown} />
           </div>
-          <div className="font-[600] text-[14px] leading-[16px] tracking-normal cursor-pointer">
+          <Link
+            href={routes.gifts}
+            className="font-[600] text-[14px] leading-[16px] tracking-normal cursor-pointer"
+          >
             Подарочные карты
-          </div>
+          </Link>
         </div>
         {/* RIGHT SIDE: ICONS (LIKES, PROFILE, CART) */}
         <div className="hidden lg:flex items-center gap-5">
