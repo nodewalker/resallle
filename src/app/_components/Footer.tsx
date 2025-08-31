@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { footerPopularCategories, routes } from "../_utils/const";
+import { footerPopularCategories, Routes } from "../_utils/const";
 import { FooterPopularCategoryType } from "../_utils/type";
 
 export const Footer = () => {
@@ -29,7 +29,7 @@ export const Footer = () => {
               return (
                 <Link
                   key={el.id}
-                  href={`${routes.catalog}?t=${el.t}`}
+                  href={`${Routes.catalog}?t=${el.t}`}
                   className="font-medium opacity-[52%] text-[13px] leading-[16px]"
                 >
                   {el.name}
@@ -49,7 +49,7 @@ export const Footer = () => {
               {"Все категории"}
             </Link>
             <Link
-              href={routes.gifts}
+              href={Routes.gifts}
               className="font-medium opacity-[52%] text-[13px] leading-[16px]"
             >
               {"Подарочные карты"}

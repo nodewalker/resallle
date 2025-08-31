@@ -6,31 +6,31 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import { RefObject } from "react";
+import { Routes } from "../_utils/const";
 
 export const SideBar = ({
   setOpen,
   searchRef,
   handleSearch,
   isOpen,
-  isStartAnimation,
 }: {
-  setOpen: (v?: boolean) => void;
+  setOpen: (v: boolean) => void;
   searchRef: RefObject<{
     header: HTMLInputElement | null;
     sideBar: HTMLInputElement | null;
   }>;
   handleSearch: () => void;
   isOpen: boolean;
-  isStartAnimation: boolean;
 }) => {
   return (
     <div
-      data-state={`${isStartAnimation ? "open" : "close"}`}
       className={`${
-        isOpen ? "fixed" : "hidden"
-      } right-0 top-0 w-[310px] h-[100vh] py-7 px-5 flex flex-col items-center gap-7 bg-[#707070] opacity-90 transition-all ease-in-out duration-100 data-[state=open]:animate-sidebar-open data-[state=close]:animate-sidebar-close`}
+        isOpen ? "sidebar-open" : "sidebar-close"
+      } w-[310px] h-[100vh] py-7 px-5 flex flex-col items-center gap-7 bg-[#707070] opacity-90 transition-all ease-in-out duration-600`}
     >
+      {/* TOP SIDE: LOGO / CLOSE BTN */}
       <div className="w-full flex items-center justify-between">
         <div className="font-[800] text-[24px] text-[#020202] leading-[30px] cursor-pointer select-none">
           RESALLLE
@@ -42,7 +42,7 @@ export const SideBar = ({
           <FontAwesomeIcon icon={faXmark} size="lg" />
         </div>
       </div>
-      {/* LEFT SIDE: ICONS (LIKES, PROFILE, CART) */}
+      {/* MIDDLE SIDE: ICONS (LIKES, PROFILE, CART) */}
       <div className="w-full flex justify-center items-center gap-7">
         <FontAwesomeIcon
           icon={faHeart}
@@ -60,7 +60,7 @@ export const SideBar = ({
           className="cursor-pointer text-white"
         />
       </div>
-      {/* MIDDLE SIDE: SEARCH, CATEGORIES, GIFT CARDS */}
+      {/* BOTTOM SIDE: SEARCH, CATEGORIES, GIFT CARDS */}
       <div className="w-full flex flex-col justify-center gap-5">
         <div className="max-w-full h-[35px] relative">
           <input
@@ -79,13 +79,17 @@ export const SideBar = ({
           />
         </div>
         <div className="flex gap-1 items-center cursor-pointer">
+          {/* TODO: OPEN MODAL WIN WITH CATEGORIES */}
           <div className="font-[600] text-[14px] leading-[16px] tracking-normal text-white">
             Каталог
           </div>
         </div>
-        <div className="font-[600] text-[14px] leading-[16px] tracking-normal cursor-pointer text-white">
+        <Link
+          href={Routes.gifts}
+          className="font-[600] text-[14px] leading-[16px] tracking-normal cursor-pointer text-white"
+        >
           Подарочные карты
-        </div>
+        </Link>
       </div>
     </div>
   );

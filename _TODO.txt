@@ -6,4 +6,4 @@
 - categories modal window
 
 # Fix/Update
-- sidebar animation fuck
++ sidebar animation fuck

@@ -30,31 +30,14 @@ body {
   }
 }
 
-@theme {
-  --animate-sidebar-open: open .3s linear;
-  --animate-sidebar-close: close .3s linear;
+.sidebar-open {
+  position: fixed;
+  right: 0;
+  top: 0;
+}
 
-  @keyframes open {
-    0% {
-      opacity: 1;
-      transform: translateX(100%);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateX(0%);
-    }
-  }
-
-  @keyframes close {
-    0% {
-      opacity: 1;
-      transform: translateX(0%);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateX(100%);
-    }
-  }
+.sidebar-close {
+  position: fixed;
+  top: 0;
+  right: -100%;
 }

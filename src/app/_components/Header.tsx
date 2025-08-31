@@ -12,7 +12,7 @@ import { faUser, faHeart } from "@fortawesome/free-regular-svg-icons";
 import { SideBar } from "./SideBar";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { routes } from "../_utils/const";
+import { Routes } from "../_utils/const";
 
 export const Header = (): React.ReactElement => {
   // SEARCH INPUT
@@ -26,16 +26,9 @@ export const Header = (): React.ReactElement => {
 
   // SIDEBAR
   const [isSideBarOpen, setSideBarOpen] = useState<boolean>(false);
-  const [isSideBarOpenAnimation, setSideBarOpenAnimation] =
-    useState<boolean>(false);
 
   // REDIRECT
   const router = useRouter();
-
-  // DELAY FOR ANIMATION
-  const delay = (ms: number): Promise<void> => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  };
 
   // ON SEARCH BTN CLICK
   const handleSearch = useCallback(() => {
@@ -68,8 +61,6 @@ export const Header = (): React.ReactElement => {
     // SIDEBAR ON RESIZE
     const handleResize = async (): Promise<void> => {
       if (window.innerWidth >= 1024) {
-        setSideBarOpenAnimation(false);
-        await delay(300);
         setSideBarOpen(false);
       }
     };
@@ -81,13 +72,10 @@ export const Header = (): React.ReactElement => {
   }, [handleSearch]);
 
   // ON SIDEBAR BTN CLICK
-  const handleSideBar = async (v?: boolean) => {
+  const handleSideBar = (v: boolean) => {
     if (v) {
-      setSideBarOpenAnimation(true);
       setSideBarOpen(true);
     } else {
-      setSideBarOpenAnimation(false);
-      await delay(300);
       setSideBarOpen(false);
     }
   };
@@ -97,9 +85,7 @@ export const Header = (): React.ReactElement => {
       <header className="container h-[80px] flex items-center justify-between">
         {/* LEFT SIDE: LOGO */}
         <div
-          className={`${
-            isSideBarOpen && "opacity-0"
-          } font-[800] text-[24px] text-[#2f2f2f] leading-[30px] cursor-pointer select-none`}
+          className={`font-[800] text-[24px] text-[#2f2f2f] leading-[30px] cursor-pointer select-none`}
         >
           RESALLLE
         </div>
@@ -129,7 +115,7 @@ export const Header = (): React.ReactElement => {
             <FontAwesomeIcon icon={faAngleDown} />
           </div>
           <Link
-            href={routes.gifts}
+            href={Routes.gifts}
             className="font-[600] text-[14px] leading-[16px] tracking-normal cursor-pointer"
           >
             Подарочные карты
@@ -153,8 +139,8 @@ export const Header = (): React.ReactElement => {
         {/* SIDEBAR BTN CLOSE/OPEN */}
         <div
           className={`${
-            isSideBarOpen ? "opacity-0" : ""
-          } lg:hidden cursor-pointer`}
+            isSideBarOpen ? "opacity-0" : "opacity-100"
+          } lg:hidden cursor-pointer transition-opacity ease-in-out duration-100`}
           onClick={() => handleSideBar(true)}
         >
           <FontAwesomeIcon icon={faBars} size="lg" />
@@ -166,7 +152,6 @@ export const Header = (): React.ReactElement => {
         searchRef={searchRef}
         handleSearch={handleSearch}
         isOpen={isSideBarOpen}
-        isStartAnimation={isSideBarOpenAnimation}
       />
     </>
   );

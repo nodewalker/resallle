@@ -8,7 +8,7 @@ export const footerPopularCategories: FooterPopularCategoryType[] = [
   { id: 5, name: "Аксессуары", t: "acsess" },
 ];
 
-export const routes = {
+export const Routes = {
   gifts: "/gifts",
   catalog: "/catalog",
 };
