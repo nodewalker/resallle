@@ -66,11 +66,11 @@ export const SideBar = ({
           <input
             type="text"
             name="search"
+            placeholder="Поиск"
+            className="w-full h-[100%] pl-[15px] pr-[40px] border-[1px] border-white rounded-2xl focus:outline-0 text-[14px] text-white leading-[18px] placeholder:text-white"
             ref={(ref) => {
               searchRef.current.sideBar = ref;
             }}
-            placeholder="Поиск"
-            className="w-full h-[100%] pl-[15px] pr-[40px] border-[1px] border-white rounded-2xl focus:outline-0 text-[14px] text-white leading-[18px] placeholder:text-white"
           />
           <FontAwesomeIcon
             icon={faMagnifyingGlass}

@@ -6,4 +6,5 @@
 - categories modal window
 
 # Fix/Update
+- Header search input broken
 + sidebar animation fuck

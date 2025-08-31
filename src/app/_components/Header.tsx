@@ -30,32 +30,38 @@ export const Header = (): React.ReactElement => {
   // REDIRECT
   const router = useRouter();
 
-  // ON SEARCH BTN CLICK
-  const handleSearch = useCallback(() => {
+  // ON HEADER SEARCH BTN CLICK
+  const handleHeaderSearch = useCallback(() => {
     if (searchRef.current.header?.value)
-      router.push(`catalog?s=${searchRef.current.header.value}`);
-    if (searchRef.current.sideBar?.value)
-      router.push(`catalog?s=${searchRef.current.sideBar.value}`);
+      router.push(`${Routes.catalog}?s=${searchRef.current.header.value}`);
     if (searchRef.current.header) searchRef.current.header.focus();
+  }, [router, searchRef]);
+
+  // ON SIDEBAR SEARCH BTN CLICK
+  const handleSideBarSearch = useCallback(() => {
+    if (searchRef.current.sideBar?.value)
+      router.push(`${Routes.catalog}?s=${searchRef.current.sideBar.value}`);
     if (searchRef.current.sideBar) searchRef.current.sideBar.focus();
   }, [router, searchRef]);
 
   // USE EFFECT
   useEffect((): (() => void) => {
     // SEARCH ON ENTER BTN
-    const handelEnterIntoSearch = (e: KeyboardEvent) => {
-      console.log(e.key);
-      if (e.key === "Enter") handleSearch();
+    const handelEnterIntoHeaderSearch = (e: KeyboardEvent) => {
+      if (e.key === "Enter") handleHeaderSearch();
+    };
+    const handelEnterIntoSideBarSearch = (e: KeyboardEvent) => {
+      if (e.key === "Enter") handleSideBarSearch();
     };
     if (searchRef.current.header)
       searchRef.current.header.addEventListener(
         "keydown",
-        handelEnterIntoSearch
+        handelEnterIntoHeaderSearch
       );
     if (searchRef.current.sideBar)
       searchRef.current.sideBar.addEventListener(
         "keydown",
-        handelEnterIntoSearch
+        handelEnterIntoSideBarSearch
       );
 
     // SIDEBAR ON RESIZE
@@ -65,11 +71,10 @@ export const Header = (): React.ReactElement => {
       }
     };
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [handleSearch]);
+  }, [handleHeaderSearch, handleSideBarSearch]);
 
   // ON SIDEBAR BTN CLICK
   const handleSideBar = (v: boolean) => {
@@ -93,18 +98,18 @@ export const Header = (): React.ReactElement => {
         <div className="hidden lg:flex items-center gap-3">
           <div className="max-w-[370px] h-[35px] relative">
             <input
-              ref={(ref) => {
-                searchRef.current.header = ref;
-              }}
               type="text"
               name="search"
               placeholder="Поиск"
               className="w-[330px] h-[100%] pl-[15px] pr-[40px] border-[1px] border-[#e3e3e3] rounded-2xl focus:outline-0 text-[14px] leading-[18px] placeholder:text-[#737B8B]"
+              ref={(ref) => {
+                searchRef.current.header = ref;
+              }}
             />
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
               className="absolute right-3 top-[9px] cursor-pointer"
-              onClick={handleSearch}
+              onClick={handleHeaderSearch}
             />
           </div>
           <div className="flex gap-1 items-center cursor-pointer">
@@ -150,7 +155,7 @@ export const Header = (): React.ReactElement => {
       <SideBar
         setOpen={handleSideBar}
         searchRef={searchRef}
-        handleSearch={handleSearch}
+        handleSearch={handleSideBarSearch}
         isOpen={isSideBarOpen}
       />
     </>
