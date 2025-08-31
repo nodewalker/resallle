@@ -11,4 +11,5 @@ export const footerPopularCategories: FooterPopularCategoryType[] = [
 export const Routes = {
   gifts: "/gifts",
   catalog: "/catalog",
+  blog: "/blog",
 };

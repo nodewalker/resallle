@@ -28,13 +28,16 @@ export const SideBar = ({
     <div
       className={`${
         isOpen ? "sidebar-open" : "sidebar-close"
-      } w-[310px] h-[100vh] py-7 px-5 flex flex-col items-center gap-7 bg-[#707070] opacity-90 transition-all ease-in-out duration-600`}
+      } w-[310px] h-[100vh] py-7 px-5 flex flex-col items-center gap-7 bg-[#707070] opacity-90 transition-all ease-in-out duration-600 z-5`}
     >
       {/* TOP SIDE: LOGO / CLOSE BTN */}
       <div className="w-full flex items-center justify-between">
-        <div className="font-[800] text-[24px] text-[#020202] leading-[30px] cursor-pointer select-none">
+        <Link
+          href={"/"}
+          className="font-[800] text-[24px] text-[#020202] leading-[30px] cursor-pointer select-none"
+        >
           RESALLLE
-        </div>
+        </Link>
         <div
           className={`lg:hidden cursor-pointer`}
           onClick={() => setOpen(false)}

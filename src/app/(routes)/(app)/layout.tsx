@@ -14,6 +14,8 @@ export default function RootLayout({
   return (
     <>
       <Header />
+      {/* TODO: MAKE HEADER FIXED */}
+      {/* <div className="pt-[80px]">{children}</div> */}
       {children}
       <Footer />
     </>

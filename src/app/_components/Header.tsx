@@ -87,13 +87,15 @@ export const Header = (): React.ReactElement => {
 
   return (
     <>
-      <header className="container h-[80px] flex items-center justify-between">
+      {/* TODO: MAKE FIXED MAY BE */}
+      <header className="container h-[80px] flex items-center justify-between z-5">
         {/* LEFT SIDE: LOGO */}
-        <div
+        <Link
+          href={"/"}
           className={`font-[800] text-[24px] text-[#2f2f2f] leading-[30px] cursor-pointer select-none`}
         >
           RESALLLE
-        </div>
+        </Link>
         {/* MIDDLE SIDE: SEARCH, CATEGORIES, GIFT CARDS */}
         <div className="hidden lg:flex items-center gap-3">
           <div className="max-w-[370px] h-[35px] relative">
