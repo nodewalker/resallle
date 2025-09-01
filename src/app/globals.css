@@ -30,14 +30,8 @@ body {
   }
 }
 
-.sidebar-open {
-  position: fixed;
-  right: 0;
-  top: 0;
-}
-
-.sidebar-close {
-  position: fixed;
-  top: 0;
-  right: -100%;
+@media (width < 40rem) {
+  .container {
+    padding: 0 10px !important;
+  }
 }

@@ -12,7 +12,7 @@ import { faUser, faHeart } from "@fortawesome/free-regular-svg-icons";
 import { SideBar } from "./SideBar";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Routes } from "../_utils/const";
+import { Routes } from "../utils/const";
 
 export const Header = (): React.ReactElement => {
   // SEARCH INPUT

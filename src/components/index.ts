@@ -1,6 +1,5 @@
-import { HeroSection } from "./HeroSection";
 import { Footer } from "./Footer";
 import { SideBar } from "./SideBar";
 import { Header } from "./Header";
 
-export { Header, SideBar, Footer, HeroSection };
+export { Header, SideBar, Footer };

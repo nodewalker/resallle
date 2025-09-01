@@ -8,7 +8,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { RefObject } from "react";
-import { Routes } from "../_utils/const";
+import { Routes } from "../utils/const";
 
 export const SideBar = ({
   setOpen,
@@ -27,21 +27,18 @@ export const SideBar = ({
   return (
     <div
       className={`${
-        isOpen ? "sidebar-open" : "sidebar-close"
-      } w-[310px] h-[100vh] py-7 px-5 flex flex-col items-center gap-7 bg-[#707070] opacity-90 transition-all ease-in-out duration-600 z-5`}
+        isOpen ? "top-0 right-0" : "top-0 right-[-100%]"
+      } fixed w-[310px] h-[100vh] py-7 px-5 flex flex-col items-center gap-7 bg-[#707070] opacity-90 transition-all ease-in-out duration-600 z-5`}
     >
       {/* TOP SIDE: LOGO / CLOSE BTN */}
       <div className="w-full flex items-center justify-between">
         <Link
           href={"/"}
-          className="font-[800] text-[24px] text-[#020202] leading-[30px] cursor-pointer select-none"
+          className="font-[800] text-[24px] text-[#020202] leading-[30px] select-none"
         >
           RESALLLE
         </Link>
-        <div
-          className={`lg:hidden cursor-pointer`}
-          onClick={() => setOpen(false)}
-        >
+        <div className={`cursor-pointer`} onClick={() => setOpen(false)}>
           <FontAwesomeIcon icon={faXmark} size="lg" />
         </div>
       </div>
@@ -89,7 +86,7 @@ export const SideBar = ({
         </div>
         <Link
           href={Routes.gifts}
-          className="font-[600] text-[14px] leading-[16px] tracking-normal cursor-pointer text-white"
+          className="font-[600] text-[14px] leading-[16px] tracking-normal text-white"
         >
           Подарочные карты
         </Link>

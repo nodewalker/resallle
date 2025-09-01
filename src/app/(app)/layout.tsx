@@ -1,4 +1,4 @@
-import { Footer, Header } from "@/app/_components";
+import { Footer, Header } from "@/components";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

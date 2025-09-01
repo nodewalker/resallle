@@ -1,9 +1,9 @@
-import { HeroSection } from "@/app/_components";
+import { Collections } from "./_components";
 
 export default function Home(): React.ReactElement {
   return (
     <>
-      <HeroSection />
+      <Collections />
       <div className="">trends</div>
       <div className="">find by color</div>
       <div className="">people say</div>

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { footerPopularCategories, Routes } from "../_utils/const";
-import { FooterPopularCategoryType } from "../_utils/type";
+import { footerPopularCategories, Routes } from "../utils/const";
+import { FooterPopularCategoryType } from "../utils/type";
 
 export const Footer = () => {
   return (
