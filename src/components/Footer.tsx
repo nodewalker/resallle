@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { footerPopularCategories, Routes } from "../utils/const";
-import { FooterPopularCategoryType } from "../utils/type";
+import { Routes, TrendCategories } from "../utils/const";
+import { TrendCategoryType } from "../utils/type";
 
 export const Footer = () => {
   return (
@@ -25,11 +25,11 @@ export const Footer = () => {
             <div className="font-semibold text-[14px] leading-[16px]">
               {"ПОПУЛЯРНОЕ"}
             </div>
-            {footerPopularCategories.map((el: FooterPopularCategoryType) => {
+            {TrendCategories.map((el: TrendCategoryType) => {
               return (
                 <Link
                   key={el.id}
-                  href={`${Routes.catalog}?t=${el.t}`}
+                  href={`${Routes.catalog}?t=${el.tag}`}
                   className="font-medium opacity-[52%] text-[13px] leading-[16px]"
                 >
                   {el.name}

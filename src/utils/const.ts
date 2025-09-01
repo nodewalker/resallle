@@ -1,15 +1,15 @@
-import { FooterPopularCategoryType } from "./type";
-
-export const footerPopularCategories: FooterPopularCategoryType[] = [
-  { id: 1, name: "Обувь", t: "shoes" },
-  { id: 2, name: "Футболки", t: "shirt" },
-  { id: 3, name: "Кутки", t: "kyrtki" },
-  { id: 4, name: "Головные уборы", t: "head" },
-  { id: 5, name: "Аксессуары", t: "acsess" },
-];
+import { TrendCategoryType } from "./type";
 
 export const Routes = {
   gifts: "/gifts",
   catalog: "/catalog",
   blog: "/blog",
 };
+
+export const TrendCategories: TrendCategoryType[] = [
+  { id: 0, name: "Обувь", tag: "shoes" },
+  { id: 1, name: "Футболки", tag: "shirt" },
+  { id: 2, name: "Куртки", tag: "jackets" },
+  { id: 3, name: "Головные уборы", tag: "hats" },
+  { id: 4, name: "Аксессуары", tag: "accessories" },
+];

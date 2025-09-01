@@ -7,6 +7,6 @@
 - home page
 
 # Fix/Update
-- Fixed header
+- Fixed position header?
 + Header search input broken
 + sidebar animation fuck

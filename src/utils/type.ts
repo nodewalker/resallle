@@ -1,5 +1,5 @@
-export type FooterPopularCategoryType = {
+export type TrendCategoryType = {
   id: number;
   name: string;
-  t: string;
+  tag: string;
 };
