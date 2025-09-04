@@ -15,7 +15,7 @@ export const ItemCard = ({
   rating: number;
   price: number;
   isSelected?: boolean;
-}) => {
+}): React.ReactElement => {
   return (
     <Link href={href} className="w-[310px] h-[450px] overflow-hidden">
       <div className="w-[310px] h-[350px] relative rounded-3xl overflow-hidden">

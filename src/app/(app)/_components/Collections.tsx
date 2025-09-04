@@ -2,7 +2,7 @@ import { Routes } from "@/utils/const";
 import Image from "next/image";
 import Link from "next/link";
 
-export const Collections = () => {
+export const Collections = (): React.ReactElement => {
   return (
     <div className="container">
       <div className="flex mt-5 md:flex-row flex-col items-center gap-[10px]">
