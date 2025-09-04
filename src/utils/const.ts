@@ -2,7 +2,8 @@ import { TrendCategoryType } from "./type";
 
 export const Routes = {
   gifts: "/gifts",
-  catalog: "/catalog",
+  catalog: { name: "/catalog", category: "t", collection: "c" },
+  item: "/item",
   blog: "/blog",
 };
 

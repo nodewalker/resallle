@@ -34,7 +34,7 @@ export const ItemCard = ({
             transform: "translate(-50%, -50%)",
           }}
         />
-        {/* ON CLICK IS SELECTED */}
+        {/* TODO: ON CLICK IS SELECTED */}
         <Image
           src={isSelected ? "/selected.png" : "/unselected.png"}
           alt={"selected"}
@@ -54,6 +54,8 @@ export const ItemCard = ({
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1">
+            {/* TODO: array: [ 'full', 'full', 'full', 'half' ] -> src={`${arr[i]}_start.png`} */}
+            {/* STYLE FOR HALF START??? */}
             {Array(Math.floor(rating))
               .fill(0)
               .map((el, i) => {

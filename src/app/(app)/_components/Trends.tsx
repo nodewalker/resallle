@@ -1,11 +1,12 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { TrendCategories } from "@/utils/const";
+import { Routes, TrendCategories } from "@/utils/const";
 import { TrendCategoryType } from "@/utils/type";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { ItemCard } from "./ItemCard";
+import Link from "next/link";
 
 export const Trends = () => {
   const searchParams = useSearchParams();
@@ -16,7 +17,7 @@ export const Trends = () => {
       (el: TrendCategoryType) => el.tag === searchParams.get("t")
     ).length
       ? searchParams.get("t")
-      : null
+      : TrendCategories[0].tag
   );
 
   const newParams: (name: string, value: string) => string = useCallback(
@@ -64,10 +65,26 @@ export const Trends = () => {
       </div>
       <div className="mt-6 flex flex-row justify-center gap-5 flex-wrap">
         <ItemCard
-          href="/?lox"
+          href={`${Routes.item}/adidas-nike-pro-uid`}
           image={"/example.png"}
           name={"Adidas nike pro"}
           rating={4.5}
+          price={1200}
+          isSelected
+        />{" "}
+        <ItemCard
+          href="/?lox"
+          image={"/example.png"}
+          name={"Adidas nike pro"}
+          rating={2}
+          price={1200}
+          // isSelected
+        />{" "}
+        <ItemCard
+          href="/?lox"
+          image={"/example.png"}
+          name={"Adidas nike pro"}
+          rating={3.5}
           price={1200}
           // isSelected
         />{" "}
@@ -79,6 +96,14 @@ export const Trends = () => {
           price={1200}
           // isSelected
         />
+      </div>
+      <div className="block w-full py-5 text-center">
+        <Link
+          href={`${Routes.catalog.name}?${Routes.catalog.category}=${selectedTag}`}
+          className="inline-block py-[10px] px-[20px] border-[1px] border-[#121212] rounded-4xl opacity-[80%]"
+        >
+          Show more
+        </Link>
       </div>
     </div>
   );

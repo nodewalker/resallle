@@ -7,6 +7,7 @@
 - home page
 
 # Fix/Update
+- rating star render 
 - Fixed position header?
 + Header search input broken
 + sidebar animation fuck

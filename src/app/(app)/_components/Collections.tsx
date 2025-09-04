@@ -30,7 +30,7 @@ export const Collections = () => {
               100+ вещей от лучших брендов для твоего лета
             </div>
             <Link
-              href={`${Routes.catalog}?col=summer-vibe`}
+              href={`${Routes.catalog.name}?col=summer-vibe`}
               className="sm:w-[280px] w-[239px] h-[50px] flex items-center justify-center bg-[#121212] text-[14px] leading-[24px] tracking-[1px] text-white rounded-3xl"
             >
               к коллекции
@@ -39,7 +39,7 @@ export const Collections = () => {
         </div>
         <div className="max-w-full flex flex-col items-center gap-[10px]">
           <Link
-            href={`${Routes.catalog}?col=active`}
+            href={`${Routes.catalog.name}?${Routes.catalog.collection}=active`}
             className="w-full min-w-[352px] h-[380px] overflow-hidden relative rounded-4xl"
           >
             <Image
@@ -60,7 +60,7 @@ export const Collections = () => {
             </div>
           </Link>
           <Link
-            href={`${Routes.catalog}?col=everyday`}
+            href={`${Routes.catalog.name}?${Routes.catalog.collection}=everyday`}
             className="w-full min-w-[352px] h-[380px] overflow-hidden relative rounded-4xl"
           >
             <Image
@@ -99,7 +99,7 @@ export const Collections = () => {
           </Link>
         </div>
         <Link
-          href={`${Routes.catalog}?col=tishki`}
+          href={`${Routes.catalog.name}?${Routes.catalog.collection}=tishki`}
           className="md:min-w-[479px] min-w-[350px] h-[380px] block relative overflow-hidden rounded-4xl"
         >
           <Image
@@ -121,7 +121,7 @@ export const Collections = () => {
           </div>
         </Link>
         <Link
-          href={`${Routes.catalog}?col=classic`}
+          href={`${Routes.catalog.name}?${Routes.catalog.collection}=classic`}
           className="md:min-w-[479px] min-w-[350px] h-[380px] block relative overflow-hidden rounded-4xl"
         >
           <Image
