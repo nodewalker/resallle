@@ -3,8 +3,8 @@
 - fontAwesome loading speed
 
 # Create
-- categories modal window
-- home page
+-- categories modal window - fuck it
++ home page
 
 # Fix/Update
 - rating star render 

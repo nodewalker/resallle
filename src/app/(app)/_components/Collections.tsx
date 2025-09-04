@@ -6,7 +6,7 @@ export const Collections = (): React.ReactElement => {
   return (
     <div className="container">
       <div className="flex mt-5 md:flex-row flex-col items-center gap-[10px]">
-        <div className="block h-[770px] w-full max-w-[958px] min-w-[352px] relative overflow-hidden rounded-4xl">
+        <div className="block h-[770px] w-full max-w-[958px] min-w-[310px] relative overflow-hidden rounded-4xl">
           <Image
             src={"/head1.png"}
             alt="as"
@@ -40,7 +40,7 @@ export const Collections = (): React.ReactElement => {
         <div className="max-w-full flex flex-col items-center gap-[10px]">
           <Link
             href={`${Routes.catalog.name}?${Routes.catalog.collection}=active`}
-            className="w-full min-w-[352px] h-[380px] overflow-hidden relative rounded-4xl"
+            className="w-full min-w-[310px] h-[380px] overflow-hidden relative rounded-4xl"
           >
             <Image
               src={"/head2.png"}
@@ -61,7 +61,7 @@ export const Collections = (): React.ReactElement => {
           </Link>
           <Link
             href={`${Routes.catalog.name}?${Routes.catalog.collection}=everyday`}
-            className="w-full min-w-[352px] h-[380px] overflow-hidden relative rounded-4xl"
+            className="w-full min-w-[310px] h-[380px] overflow-hidden relative rounded-4xl"
           >
             <Image
               src={"/head3.png"}

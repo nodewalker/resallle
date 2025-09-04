@@ -34,7 +34,7 @@ export const Footer = () => {
           </button>
         </form>
       </div>
-      <div className="lg:pt-[100px] pt-[200px] w-full bg-[#121212]">
+      <div className="lg:pt-[100px] pt-[220px] w-full bg-[#121212]">
         <div className="container flex lg:flex-row flex-col gap-10 items-center justify-between !py-[40px] lg:!py-[60px] text-white font-medium">
           <div className="flex flex-col lg:items-start items-center gap-5">
             <div className="font-extrabold text-[24px] leading-[30px]">
