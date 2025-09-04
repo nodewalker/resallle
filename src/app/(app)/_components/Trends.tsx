@@ -63,7 +63,7 @@ export const Trends = (): React.ReactElement => {
           })}
         </div>
       </div>
-      <div className="mt-6 flex flex-row justify-center gap-5 flex-wrap">
+      <div className="mt-6 pb-5 flex flex-row gap-5 overflow-x-scroll">
         <ItemCard
           href={`${Routes.item}/adidas-nike-pro-uid`}
           image={"/example.png"}
