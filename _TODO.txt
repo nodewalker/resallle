@@ -9,5 +9,6 @@
 # Fix/Update
 - rating star render 
 - Fixed position header?
++ Footer news sub add
 + Header search input broken
 + sidebar animation fuck

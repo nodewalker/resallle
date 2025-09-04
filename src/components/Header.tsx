@@ -4,7 +4,6 @@ import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMagnifyingGlass,
-  faAngleDown,
   faCartShopping,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
@@ -115,11 +114,12 @@ export const Header = (): React.ReactElement => {
             />
           </div>
           <div className="flex gap-1 items-center cursor-pointer">
-            {/* TODO: OPEN MODAL WIN WITH CATEGORIES */}
-            <div className="font-[600] text-[14px] leading-[16px] tracking-normal">
-              {"Все категории"}
-            </div>
-            <FontAwesomeIcon icon={faAngleDown} />
+            <Link
+              href={Routes.catalog.name}
+              className="font-[600] text-[14px] leading-[16px] tracking-normal"
+            >
+              {"Каталог товаров"}
+            </Link>
           </div>
           <Link
             href={Routes.gifts}

@@ -100,7 +100,7 @@ export const Trends = () => {
       <div className="block w-full py-5 text-center">
         <Link
           href={`${Routes.catalog.name}?${Routes.catalog.category}=${selectedTag}`}
-          className="inline-block py-[10px] px-[20px] border-[1px] border-[#121212] rounded-4xl opacity-[80%]"
+          className="inline-block py-[7px] px-[25px] border-[1px] border-[#121212] rounded-4xl opacity-[80%]"
         >
           Show more
         </Link>
