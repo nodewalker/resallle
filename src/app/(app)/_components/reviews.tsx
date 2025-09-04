@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const Reviews = (): React.ReactElement => {
   return (
-    <div className="container w-full !py-7">
+    <div className="container w-full !py-10">
       <div className="w-full h-[550px] relative overflow-hidden rounded-4xl">
         <Image
           src={"/rev1.png"}

@@ -1,4 +1,4 @@
-import { Collections, Reviews, Trends } from "./_components";
+import { Benefits, Collections, Reviews, Trends } from "./_components";
 
 export default function Home(): React.ReactElement {
   return (
@@ -6,7 +6,7 @@ export default function Home(): React.ReactElement {
       <Collections />
       <Trends />
       <Reviews />
-      <div className="">we you love us</div>
+      <Benefits />
       <div className="">post from blog</div>
     </>
   );
