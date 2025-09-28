@@ -12,6 +12,7 @@ import { SideBar } from "./SideBar";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Routes } from "../utils/const";
+import { Logo } from ".";
 
 export const Header = (): React.ReactElement => {
   // SEARCH INPUT
@@ -89,12 +90,7 @@ export const Header = (): React.ReactElement => {
       {/* TODO: MAKE FIXED MAY BE */}
       <header className="container h-[80px] flex items-center justify-between z-5">
         {/* LEFT SIDE: LOGO */}
-        <Link
-          href={"/"}
-          className={`font-[800] text-[24px] text-[#2f2f2f] leading-[30px] cursor-pointer select-none`}
-        >
-          RESALLLE
-        </Link>
+        <Logo />
         {/* MIDDLE SIDE: SEARCH, CATEGORIES, GIFT CARDS */}
         <div className="hidden lg:flex items-center gap-3">
           <div className="max-w-[370px] h-[35px] relative">
