@@ -19,11 +19,9 @@ export const AuthProvider = ({ children }: { children?: React.ReactNode }) => {
 
   useEffect(() => {
     const fetchAuth = async () => {
-      const access_token = localStorage.getItem("access");
-      if (access_token) {
-        const user = await userProfile.mutateAsync(access_token);
-        if (user?._uuid) dispatch(login(user));
-      }
+      const access_token = localStorage.getItem("access") || "";
+      const user = await userProfile.mutateAsync(access_token);
+      if (user?._uuid) dispatch(login(user));
     };
 
     fetchAuth();

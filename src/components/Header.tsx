@@ -126,17 +126,27 @@ export const Header = (): React.ReactElement => {
         </div>
         {/* RIGHT SIDE: ICONS (LIKES, PROFILE, CART) */}
         <div className="hidden lg:flex items-center gap-5">
-          <FontAwesomeIcon
-            icon={faHeart}
-            size="lg"
-            className="cursor-pointer"
-          />
-          <FontAwesomeIcon icon={faUser} size="lg" className="cursor-pointer" />
-          <FontAwesomeIcon
-            icon={faCartShopping}
-            size="lg"
-            className="cursor-pointer"
-          />
+          <Link href={Routes.favorite}>
+            <FontAwesomeIcon
+              icon={faHeart}
+              size="lg"
+              className="cursor-pointer"
+            />
+          </Link>
+          <Link href={Routes.user}>
+            <FontAwesomeIcon
+              icon={faUser}
+              size="lg"
+              className="cursor-pointer"
+            />
+          </Link>
+          <Link href={Routes.cart}>
+            <FontAwesomeIcon
+              icon={faCartShopping}
+              size="lg"
+              className="cursor-pointer"
+            />
+          </Link>
         </div>
 
         {/* SIDEBAR BTN CLOSE/OPEN */}

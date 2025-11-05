@@ -28,16 +28,23 @@ const userSlice = createSlice({
       state.data = action.payload;
       state.isLoading = true;
     },
-    logOut: (state) => {
+    logOut: (state: WritableDraft<UserState>) => {
       if (state.data?._uuid) {
         state.data = null;
         state.isLoading = false;
       }
+    },
+    loading: (
+      state: WritableDraft<UserState>,
+      action: PayloadAction<{ isLoading: boolean }>
+    ) => {
+      state.isLoading = action.payload.isLoading;
     },
   },
 });
 
 export const IsUserAuth = (state: RootState) =>
   state.user.data?._uuid ? true : false;
+export const IsUserLoading = (state: RootState) => state.user.isLoading;
 export const { login, logOut } = userSlice.actions;
 export default userSlice.reducer;

@@ -4,6 +4,7 @@ import { Logo } from "@/components";
 import { UserProfile, UserRegister } from "@/lib/api";
 import { useAppDispatch, useAppSelector } from "@/lib/redux";
 import { IsUserAuth, login } from "@/lib/redux/store/user";
+import { Routes } from "@/utils/const";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -16,7 +17,7 @@ const SignUp = () => {
   const navigate = useRouter();
 
   useEffect(() => {
-    if (isAuth) navigate.push("/");
+    if (isAuth) navigate.push(Routes.user);
   }, [isAuth, navigate]);
 
   const registrationRes = useMutation({

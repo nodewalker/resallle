@@ -8,7 +8,7 @@ export default function RootLayout({
 }>): React.ReactElement {
   return (
     <html lang="ru" className="scroll-smooth!">
-      <body className="relative">
+      <body>
         <Providers>{children}</Providers>
       </body>
     </html>

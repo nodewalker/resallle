@@ -1,10 +1,16 @@
 import { TrendCategoryType } from "./type";
 
 export const Routes = {
+  main: "/",
   gifts: "/gifts",
   catalog: { name: "/catalog", category: "t", collection: "c" },
   item: "/item",
   blog: "/blog",
+  user: "/user",
+  favorite: "/user/favorite",
+  cart: "/user/cart",
+  signin: "/auth/signin",
+  signup: "/auth/signup",
 };
 
 export const TrendCategories: TrendCategoryType[] = [
