@@ -1,3 +1,4 @@
+import { GetProducts } from "./product/getProducts";
 import { UserLogin } from "./auth/login";
 import { UserProfile } from "./user/getProfile";
 import { UserRegister } from "./auth/register";
@@ -48,4 +49,4 @@ export { UserRegister, UserLogin };
 export { UserProfile };
 
 // PRODUCTS
-export { GetCategories };
+export { GetCategories, GetProducts };

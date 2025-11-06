@@ -2,32 +2,33 @@
 
 import { faAngleUp, faSliders } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { PriceSlider } from "./PriceSlider";
-import { useQuery } from "@tanstack/react-query";
-import { GetCategories } from "@/lib/api";
+import { UseQueryResult } from "@tanstack/react-query";
 import { CategoryTree } from "./Categories";
-import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { QueryType } from "@/utils/type";
+import { Category, QueryType } from "@/utils/type";
 
-export const Filter = (): React.ReactElement => {
+export const Filter = ({
+  productsPriceRange,
+  categoryRes,
+  params,
+  pathname,
+  handleQuery,
+}: {
+  categoryRes: UseQueryResult<Category[], Error>;
+  productsPriceRange: [number, number];
+  params: URLSearchParams;
+  pathname: string;
+  handleQuery: (query: QueryType[]) => void;
+}): React.ReactElement => {
   const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const params = useMemo(
-    () => new URLSearchParams(searchParams.toString()),
-    [searchParams]
-  );
 
   // PRICE
   const [isPriceOpen, setPriceOpen] = useState<boolean>(
     params.get("pf") || params.get("pt") ? true : false
   );
-  const [productsPriceRange, setProductsPriceRange] = useState<
-    [number, number]
-  >([0, 10000]);
   const [priceRange, setPriceRange] = useState<[number, number]>([
     Number(params.get("pf")) || productsPriceRange[0],
     Number(params.get("pt")) || productsPriceRange[1],
@@ -43,26 +44,6 @@ export const Filter = (): React.ReactElement => {
 
   // CATEGORY
   const [cid, setCid] = useState<string | null>(params.get("cid"));
-  const { isPending, isError, data, error } = useQuery({
-    queryFn: GetCategories,
-    queryKey: ["category"],
-  });
-
-  // QUERY
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      params.set(name, value);
-      return params.toString();
-    },
-    [params]
-  );
-  const handleQuery = (query: QueryType[]) => {
-    let q = "";
-    query.forEach((el) => (q = createQueryString(el.key, el.value)));
-    router.push(pathname + "?" + q, {
-      scroll: false,
-    });
-  };
 
   // RESET
   const handleResetFilter = () => {
@@ -73,7 +54,7 @@ export const Filter = (): React.ReactElement => {
   };
 
   return (
-    <div className="w-[300px] border-2 border-black/10 rounded-2xl px-[24px] py-[20px]">
+    <div className="min-w-[300px] border-2 border-black/10 rounded-2xl px-[24px] py-[20px]">
       <div className="flex justify-between items-center border-b-[1px] border-black/10 pb-[20px]">
         <div className="font-bold text-[20px]">{"Фильтр"}</div>
         <FontAwesomeIcon
@@ -85,7 +66,7 @@ export const Filter = (): React.ReactElement => {
 
       <div className="flex justify-between items-center border-b-[1px] border-black/10 py-[20px]">
         <AnimatePresence>
-          {isPending && (
+          {categoryRes.isPending && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -95,10 +76,10 @@ export const Filter = (): React.ReactElement => {
               Pending
             </motion.div>
           )}
-          {isError && <div>Error: {error.toString()}</div>}
-          {data && (
+          {categoryRes.isError && <div>{categoryRes.error.toString()}</div>}
+          {!categoryRes.isPending && categoryRes.data && (
             <CategoryTree
-              data={data}
+              data={categoryRes.data}
               handleQuery={handleQuery}
               cid={cid}
               setCid={setCid}

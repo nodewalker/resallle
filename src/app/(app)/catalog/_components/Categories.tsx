@@ -1,18 +1,10 @@
 "use client";
 
-import { QueryType } from "@/utils/type";
+import { Category, QueryType } from "@/utils/type";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "motion/react";
 import { Dispatch, SetStateAction, useState } from "react";
-
-type Category = {
-  _uuid?: string;
-  name?: string;
-  children?: Category[];
-  hasChildren?: boolean;
-  hasProduct?: boolean;
-};
 
 const CategoryItem: React.FC<{
   category: Category;

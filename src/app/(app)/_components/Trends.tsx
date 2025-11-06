@@ -5,7 +5,7 @@ import { Routes, TrendCategories } from "@/utils/const";
 import { TrendCategoryType } from "@/utils/type";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { ItemCard } from "./ItemCard";
+import { ItemCard } from "../../../components/ItemCard";
 import Link from "next/link";
 
 export const Trends = (): React.ReactElement => {

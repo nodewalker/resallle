@@ -10,7 +10,7 @@ export const ItemCard = ({
   isSelected,
 }: {
   href: string;
-  image: string; // URL
+  image: string;
   name: string;
   rating: number;
   price: number;
