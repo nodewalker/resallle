@@ -26,7 +26,7 @@ const SignIn = (): React.ReactElement => {
       queryClient.invalidateQueries({ queryKey: ["auth"] });
     },
   });
-  const userProfile = useMutation({
+  const userProfileRes = useMutation({
     mutationFn: UserProfile,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
@@ -40,7 +40,7 @@ const SignIn = (): React.ReactElement => {
     } else if (tokens.access_token) {
       localStorage.setItem("access", tokens.access_token);
       localStorage.setItem("refresh", tokens.refresh_token);
-      const user = await userProfile.mutateAsync(tokens.access_token);
+      const user = await userProfileRes.mutateAsync(tokens.access_token);
       if (user?._uuid) {
         dispatch(login(user));
       } else setError(user.message);

@@ -3,3 +3,8 @@ export type TrendCategoryType = {
   name: string;
   tag: string;
 };
+
+export type QueryType = {
+  key: string;
+  value: string;
+};

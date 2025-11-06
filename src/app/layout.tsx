@@ -7,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>): React.ReactElement {
   return (
-    <html lang="ru" className="scroll-smooth!">
+    <html lang="ru" data-scroll-behavior="smooth">
       <body>
         <Providers>{children}</Providers>
       </body>

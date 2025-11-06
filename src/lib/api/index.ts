@@ -1,6 +1,7 @@
 import { UserLogin } from "./auth/login";
 import { UserProfile } from "./user/getProfile";
 import { UserRegister } from "./auth/register";
+import { GetCategories } from "./product/getCategories";
 
 export const fetchWithUrl = async (url: string, init?: RequestInit) => {
   const apiUrl = process.env.API_URL || "https://fakestoreapi.ru";
@@ -40,4 +41,11 @@ export const fetchWithAuth = async (url: string, init?: RequestInit) => {
   return f;
 };
 
-export { UserRegister, UserProfile, UserLogin };
+// AUTH
+export { UserRegister, UserLogin };
+
+// USER
+export { UserProfile };
+
+// PRODUCTS
+export { GetCategories };
