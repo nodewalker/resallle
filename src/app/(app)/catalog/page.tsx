@@ -80,6 +80,7 @@ export default function Catalog() {
           products={productRes}
           currPagination={pagination}
           setCurrPagination={handlePagination}
+          params={params}
         />
       )}
     </div>
