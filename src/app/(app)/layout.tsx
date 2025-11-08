@@ -1,5 +1,6 @@
 import { Footer, Header } from "@/components";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Resallle",
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <>
       <Header />
-      <main className="mt-[20px] w-full">{children}</main>
+      <main className="mt-[20px] w-full">
+        <Suspense fallback={""}>{children}</Suspense>
+      </main>
       <Footer />
     </>
   );

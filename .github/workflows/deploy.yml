@@ -1,0 +1,30 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  deployOnServer:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    steps:
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Deploy on server
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
+            cd /home/pets/resallle
+            git switch master
+            git pull
+            echo "API_URL=${{ secrets.API_URL }}" >> .env.prod
+            docker compose --env-file .env.prod up -d --build
+            rm .env.prod
+            echo y | docker system prune -fa
+          EOF
