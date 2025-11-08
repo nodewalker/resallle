@@ -5,5 +5,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
-    container_name: portfolio
+    container_name: resallle
     restart: on-failure
