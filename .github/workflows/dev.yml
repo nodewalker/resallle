@@ -25,14 +25,10 @@ jobs:
 
       - name: Push dev changes to master
         run: |
-          TARGET_BRANCH="master"
-
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
 
-          git fetch origin $TARGET_BRANCH
+          git checkout master || git checkout -b master
+          git merge origin/dev -m "[Action] Sync dev -> master" || true
 
-          git checkout $TARGET_BRANCH || git checkout -b $TARGET_BRANCH
-          git merge --ff-only origin/dev || git merge origin/dev --no-edit
-
-          git push https://x-access-token:${{ secrets.PERSONAL_TOKEN  }}@github.com/${{ github.repository }} $TARGET_BRANCH
+          git push https://x-access-token:${{ secrets.PERSONAL_TOKEN  }}@github.com/${{ github.repository }} master
