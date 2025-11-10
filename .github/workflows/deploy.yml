@@ -4,11 +4,15 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["dev"]
+    types:
+      - completed
 
 jobs:
   deployOnServer:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     steps:
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.9.1
