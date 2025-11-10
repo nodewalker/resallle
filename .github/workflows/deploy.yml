@@ -4,11 +4,6 @@ on:
   push:
     branches:
       - master
-  workflow_dispatch:
-  workflow_run:
-    workflows: ["dev"]
-    types:
-      - completed
 
 jobs:
   deployOnServer:
@@ -20,7 +15,7 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Deploy on server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.PERSONAL_TOKEN }}@${{ secrets.SERVER_HOST }} << 'EOF'
             cd /home/pets/resallle
             git switch master
             git pull
