@@ -4,32 +4,32 @@ on:
   push:
     branches:
       - dev
-  pull_request:
-    branches:
-      - dev
+  workflow_run:
+    workflows: ["check"]
+    types:
+      - completed
 
 jobs:
-  deployOnServer:
+  commitChangesToMaster:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20.x]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          fetch-depth: 0
+          persist-credentials: false
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Push dev changes to master
+        run: |
+          TARGET_BRANCH="master"
 
-      - name: Build try
-        run: npm run build
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
 
-    #   - name: Run linter
-    #     run: npm run lint
+          git fetch origin $TARGET_BRANCH
+
+          git checkout $TARGET_BRANCH || git checkout -b $TARGET_BRANCH
+          git merge --ff-only origin/dev || git merge origin/dev --no-edit
+
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} $TARGET_BRANCH
