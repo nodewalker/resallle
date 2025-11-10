@@ -29,11 +29,10 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git checkout master || git checkout -b master
-          git merge origin/dev -m "[Action] Sync dev -> master" || true
+          git merge origin/dev -m "[Action] Sync dev -> master"
+          git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} master
 
-          git push https://x-access-token:${{ secrets.PERSONAL_TOKEN  }}@github.com/${{ github.repository }} master
-            - name: Trigger master workflow
-      - name: Trigger workflow
+      - name: Trigger master workflow
         run: |
           curl -X POST \
             -H "Accept: application/vnd.github+json" \
