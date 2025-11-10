@@ -35,4 +35,4 @@ jobs:
           git checkout $TARGET_BRANCH || git checkout -b $TARGET_BRANCH
           git merge --ff-only origin/dev || git merge origin/dev --no-edit
 
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} $TARGET_BRANCH
+          git push https://x-access-token:${{ secrets.PERSONAL_TOKEN  }}@github.com/${{ github.repository }} $TARGET_BRANCH
