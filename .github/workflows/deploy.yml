@@ -5,7 +5,7 @@ on:
     branches:
       - master
   repository_dispatch:
-    types: [trigger-master]
+    types: [deploy]
 
 jobs:
   deployOnServer:
