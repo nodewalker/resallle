@@ -57,13 +57,22 @@ export default function Catalog() {
   // PRODUCTS
   const productRes: UseQueryResult<ProductRes, Error> = useQuery({
     queryKey: ["product", query],
-    queryFn: () => GetProducts(query),
+    queryFn: async () => {
+      const res: ProductRes = await GetProducts(query);
+      if (res?.price_range)
+        setProductsPriceRange([res.price_range.min, res.price_range.max]);
+      return res;
+    },
   });
 
   // PRICE
+  // TODO: fix
   const [productsPriceRange, setProductsPriceRange] = useState<
     [number, number]
-  >([0, 10000]);
+  >([
+    productRes.isPending ? 0 : productRes.data!.price_range.min,
+    productRes.isPending ? 10000 : productRes.data!.price_range.max,
+  ]);
 
   return (
     <div className="container !pb-[20px] flex gap-5">
@@ -74,7 +83,6 @@ export default function Catalog() {
         pathname={pathname}
         handleQuery={handleQuery}
       />
-      {productRes.isPending && <div>Pending</div>}
       {!productRes.isPending && (
         <ProductList
           products={productRes}

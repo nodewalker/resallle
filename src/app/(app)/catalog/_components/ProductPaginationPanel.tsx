@@ -8,13 +8,13 @@ const pp = ({
   currPagination,
   setCurrPagination,
 }: {
-  pagination: Pagination | undefined;
+  pagination: Pagination;
   currPagination: [number, number];
   setCurrPagination: (value: [number, number]) => void;
 }) => {
   const pages: (number | "...")[] = getPageNumbers(
     currPagination[0],
-    240 //pagination?.totalPage as number
+    pagination.totalPages as number
   );
 
   const handlePageClick = (
@@ -23,13 +23,7 @@ const pp = ({
   ) => {
     if (type === "left" && currPagination[0] > 1)
       setCurrPagination([currPagination[0] - 1, currPagination[1]]);
-    else if (
-      type === "right" &&
-      currPagination[0] < 240
-      // &&
-      // pagination?.totalPage &&
-      // currPage < pagination.totalPage
-    )
+    else if (type === "right" && currPagination[0] < pagination?.totalPages)
       setCurrPagination([currPagination[0] + 1, currPagination[1]]);
     else if (type === "number" && value && currPagination[0] !== value)
       setCurrPagination([value, currPagination[1]]);

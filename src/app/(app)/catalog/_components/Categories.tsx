@@ -33,7 +33,10 @@ const CategoryItem: React.FC<{
           }`}
           onClick={() => {
             setCid(category._uuid as string);
-            handleQuery([{ key: "cid", value: category._uuid as string }]);
+            handleQuery([
+              { key: "cid", value: category._uuid as string },
+              { key: "p", value: "1" },
+            ]);
             if (category.hasChildren) setOpen(true);
           }}
         >
@@ -62,7 +65,6 @@ const CategoryItem: React.FC<{
           ))}
         </ul>
       )}
-      {category.hasProduct && <div>product</div>}
     </motion.li>
   );
 };

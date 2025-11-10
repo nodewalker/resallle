@@ -54,7 +54,7 @@ export const Filter = ({
   };
 
   return (
-    <div className="min-w-[300px] border-2 border-black/10 rounded-2xl px-[24px] py-[20px]">
+    <div className="min-w-[300px] max-w-[300px] h-full border-2 border-black/10 rounded-2xl px-[24px] py-[20px]">
       <div className="flex justify-between items-center border-b-[1px] border-black/10 pb-[20px]">
         <div className="font-bold text-[20px]">{"Фильтр"}</div>
         <FontAwesomeIcon

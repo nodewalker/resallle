@@ -19,6 +19,7 @@ export type Category = {
 
 export type ProductRes = {
   data: Product[];
+  price_range: { min: number; max: number };
   pagination: Pagination;
 };
 
@@ -34,12 +35,14 @@ export type Product = {
     _uuid: string;
     name: string;
   };
+  rating: number;
+  review_count: number;
 };
 
 export type Pagination = {
   total: number;
   page: number;
   limit: number;
-  totalPage: number;
+  totalPages: number;
   isLastPage: boolean;
 };

@@ -23,22 +23,14 @@ export const ProductList: React.FC<{
       <ProductFilterPanel params={params} />
       <div className="flex flex-wrap gap-x-5 gap-y-3">
         {products.isError && <div>{products.error.toString()}</div>}
+        {products.isPending && <h1>PENDING</h1>}
         {products.data?.data &&
           products.data.data.map((p: Product) => {
-            return (
-              <ItemCard
-                key={p._uuid}
-                href={p._uuid}
-                image={p.images[0]._uuid}
-                name={p.name}
-                rating={3}
-                price={p.price}
-              />
-            );
+            return <ItemCard key={p._uuid} product={p} />;
           })}
       </div>
       <ProductPaginationPanel
-        pagination={products.data?.pagination}
+        pagination={products.data!.pagination}
         currPagination={currPagination}
         setCurrPagination={setCurrPagination}
       />

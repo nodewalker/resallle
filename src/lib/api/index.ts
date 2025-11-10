@@ -21,6 +21,7 @@ export const fetchWithAuth = async (url: string, init?: RequestInit) => {
 
   if (f.statusCode === 401) {
     const refresh_token = localStorage.getItem("refresh");
+    if (!refresh_token) return f;
     const refresh = await fetch(`${apiUrl}/auth/refresh?rt=${refresh_token}`, {
       method: "post",
       cache: "no-store",

@@ -1,62 +1,29 @@
+import { Product } from "@/utils/type";
 import Image from "next/image";
 import Link from "next/link";
 
 export const ItemCard = ({
-  href,
-  image,
-  name,
-  rating,
-  price,
-  isSelected,
+  product,
 }: {
-  href: string;
-  image: string;
-  name: string;
-  rating: number;
-  price: number;
-  isSelected?: boolean;
+  product: Product;
 }): React.ReactElement => {
   return (
-    <Link href={href} className="w-[310px] h-[450px]">
-      <div className="w-[310px] h-[350px] relative rounded-3xl overflow-hidden">
+    <Link href={`/p/${product._uuid}`} className="w-[295px] h-[410px]">
+      <div className="w-[295px] h-[300px] relative rounded-3xl overflow-hidden">
         <Image
-          src={image}
-          alt={"card image"}
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "auto",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-        {/* TODO: ON CLICK IS SELECTED */}
-        <Image
-          src={isSelected ? "/selected.png" : "/unselected.png"}
-          alt={"selected"}
-          width={40}
-          height={40}
-          style={{
-            position: "absolute",
-            top: "20px",
-            right: "20px",
-            zIndex: "5",
-          }}
+          src={`https://fakestoreapi.ru/files/products/${product.images[0]._uuid}`}
+          alt={product.name}
+          fill
+          style={{ objectFit: "cover" }}
         />
       </div>
-      <div className="mt-[10px] w-[310px] h-[90px] flex flex-col justify-between">
-        <div className="font-medium text-[24px] leading-[32px] tracking-[-1px] text-[#121212]">
-          {name}
+      <div className="py-[10px] w-[295px] flex flex-col justify-between">
+        <div className="font-medium text-[24px] leading-[32px] tracking-[-1px] text-[#121212] whitespace-nowrap overflow-x-hidden">
+          {product.name}
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1">
-            {/* TODO: array: [ 'full', 'full', 'full', 'half' ] -> src={`${arr[i]}_start.png`} */}
-            {/* STYLE FOR HALF START??? */}
-            {Array(Math.floor(rating))
+            {Array(Math.floor(product.rating))
               .fill(0)
               .map((el, i) => {
                 return (
@@ -70,7 +37,7 @@ export const ItemCard = ({
                   />
                 );
               })}
-            {rating % 1 ? (
+            {product.rating % 1 ? (
               <Image
                 src={"/half_star.png"}
                 alt={"start"}
@@ -80,9 +47,9 @@ export const ItemCard = ({
               />
             ) : null}
           </div>
-          <div className="font-normal text-[16px] leading-[24px] tracking-normal opacity-[90%]">{`${rating}/5`}</div>
+          <div className="font-normal text-[16px] leading-[24px] tracking-normal opacity-[90%]">{`${product.rating}/5`}</div>
         </div>
-        <div className="font-normal text-[20px] leading-[28px] tracking-[-1px] opacity-[80%]">{`₽ ${price}`}</div>
+        <div className="font-normal text-[20px] leading-[28px] tracking-[-1px] text-[#121212]">{`₽ ${product.price}`}</div>
       </div>
     </Link>
   );
