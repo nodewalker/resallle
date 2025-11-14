@@ -3,7 +3,7 @@ import { Blog } from "./Blog";
 import { Benefits } from "./Benefits";
 import { BenefitBlock } from "./BenefitBlock";
 import { ItemCard } from "../../../components/ItemCard";
-import { Trends } from "./Trends";
+import { Trends } from "./trends/Trends";
 import { Collections } from "./Collections";
 import { Reviews } from "./Reviews";
 

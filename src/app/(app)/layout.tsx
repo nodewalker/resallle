@@ -16,7 +16,7 @@ export default function RootLayout({
     <>
       <Header />
       <main className="mt-[20px] w-full">
-        <Suspense fallback={""}>{children}</Suspense>
+        <Suspense fallback="catalog">{children}</Suspense>
       </main>
       <Footer />
     </>
